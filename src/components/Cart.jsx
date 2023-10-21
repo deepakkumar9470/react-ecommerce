@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {removeFromCart } from "../redux/cartSlice";
+import { removeFromCart } from "../redux/cartSlice";
 import { toast } from "react-hot-toast";
 import { X, DollarSign, Plus, Minus } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -9,14 +9,13 @@ const Cart = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.cart);
   const removeHandler = (productId) => {
-    console.log(productId)
+    console.log(productId);
     dispatch(removeFromCart(productId));
     toast.success(`Item removed from cart`);
   };
 
   return (
-  
-      <div className="bg-gray-100">
+    <div className="bg-gray-100">
       <div className="container mx-auto mt-10">
         <div className="flex shadow-md my-10">
           <div className="w-3/4 bg-white px-10 py-10">
@@ -37,7 +36,10 @@ const Cart = () => {
             </div>
             {/* Card start */}
             {product.map((item) => (
-              <div key={item.id} className="flex items-center hover:bg-[rgb(246,246,248)] -mx-8 px-6 py-5 cursor-pointer">
+              <div
+                key={item.id}
+                className="flex items-center hover:bg-[rgb(246,246,248)] -mx-8 px-6 py-5 cursor-pointer"
+              >
                 <div className="flex w-2/5">
                   <div className="w-20">
                     <img className="h-24" src={item?.image} alt={item.title} />
@@ -57,7 +59,8 @@ const Cart = () => {
                   <input
                     className="mx-2 border text-center w-8"
                     type="text"
-                    value="5"
+                    value="2"
+                    onChange={""}
                   />
 
                   <Plus size={18} className="font-bold cursor-pointer" />
@@ -133,7 +136,6 @@ const Cart = () => {
         </div>
       </div>
     </div>
-
   );
 };
 

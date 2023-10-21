@@ -22,7 +22,26 @@ function App() {
   const {isAuthenticated, isLoading } = useAuth0();
   return (
     <div>
-        <Toaster/>
+        <Toaster
+          toastOptions={{
+            style: {
+              color: 'white',
+            },
+            success: {
+              iconTheme: {
+                primary: 'black',
+                secondary: 'white',
+              },
+              style: {
+                background: 'orange',
+              },
+            },
+            error: {
+              style: {
+                background: 'red',
+              },
+            },
+          }}/>
         <BrowserRouter >
         <Routes>
         <Route path="/" index={true} element={<HomeLayout><Home/></HomeLayout>  } />

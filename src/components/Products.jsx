@@ -1,20 +1,23 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import Product from './Product'
-import { useDispatch } from 'react-redux'
-import { addToCart } from '../redux/cartSlice'
+import {Search} from 'lucide-react'
 import Filter from './Filter'
 const Products = () => {
     
     const [products, setProducts] = useState([])
+    const [query, setQuery] = useState("");
+
     const [cat,setCat] = useState('')
-    const dispatch = useDispatch()
 
     useEffect(() => {
         let apiUrl = "https://fakestoreapi.com/products";
         if(cat){
             apiUrl = `https://fakestoreapi.com/products/category/${cat}`;
         }
+        if (query) {
+            apiUrl += `?search=${query}`;
+          }
         const fecthProducts = async () =>{
             try {
                 const res = await axios.get(apiUrl)
@@ -25,7 +28,7 @@ const Products = () => {
 
         }
         fecthProducts()
-    }, [cat])
+    }, [cat,query])
 
    const handleCategory = (item) =>{
     setCat(item)
@@ -33,7 +36,21 @@ const Products = () => {
  
   return (
     <>
-          <Filter handleCategory={handleCategory}/>  
+        <div className='flex items-center justify-between px-10'>
+        <Filter handleCategory={handleCategory}/>
+          <div className="flex items-center gap-2  px-4 text-white relative">
+          <input
+            className="bg-gray-50 rounded-full outline-none px-10 py-2 text-gray-500"
+            type="text"
+            value={query}
+            onChange={(e)=>setQuery(e.target.value)}
+            placeholder="Search Product"
+          />
+          <Search className="absolute right-8 w-5 h-5 text-gray-400" />
+        </div>  
+
+        </div>
+          
           <div className='px-10 py-5'>
         <h2 className='text-3xl font-extrabold pl-4 mb-4'>New Arrival</h2>
 

@@ -1,19 +1,13 @@
 import React from "react";
-import {
-  ChevronDown,
-  Search,
-  ShoppingCart,
-  BaggageClaim,
-} from "lucide-react";
-import {useSelector} from 'react-redux'
+import { ChevronDown, Search, ShoppingCart, BaggageClaim } from "lucide-react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = () => {
-  const item = useSelector((state) => state.cart)
+  const item = useSelector((state) => state.cart);
   const { user, isAuthenticated, isLoading, loginWithRedirect, logout } =
     useAuth0();
-
 
   return (
     <div className="w-full flex items-center justify-between px-10 py-5">
@@ -41,14 +35,6 @@ const Header = () => {
       </div>
 
       <div className="flex items-center gap-2 md:gap-4 px-5 py-5">
-        <div className="flex items-center gap-2  px-4 text-white relative">
-          <input
-            className="bg-gray-50 rounded-full outline-none px-10 py-2 text-gray-500"
-            type="text"
-            placeholder="Search Product"
-          />
-          <Search className="absolute right-8 w-5 h-5 text-gray-400" />
-        </div>
         {!isAuthenticated && (
           <button
             className="bg-orange-500 text-white font-semibold rounded-md cursor-pointer px-4 py-2"
@@ -58,38 +44,42 @@ const Header = () => {
           </button>
         )}
 
-        <div className="md:flex hidden md:block items-center gap-2 pr-4">
+        <div className="md:flex  md:block items-center gap-2 pr-4">
           {isAuthenticated && (
-            <>
-          <img  className="w-6 h-6 rounded-full" 
-                src={user.picture} 
-                alt={user.nickname}/>
-          <span className="font-bold">{user.nickname}</span>
-            <button
-              className="bg-gray-700 text-white font-semibold rounded-md cursor-pointer px-3 py-2"
-              onClick={() =>
-                logout({ logoutParams: { returnTo: window.location.origin } })
-              }
-            >
-              Log Out
-            </button>
-         </>
+            <div div className="flex items-center gap-4">
+              <img
+                className="w-12 h-12 md:w-10 md:h-10 rounded-full cursor-pointer"
+                src={user.picture}
+                alt={user.nickname}
+              />
+              <span className="hidden md:block font-bold">{user.nickname}</span>
+              <button
+                className="bg-gray-700 text-white font-semibold rounded-md cursor-pointer px-3 py-2"
+                onClick={() =>
+                  logout({ logoutParams: { returnTo: window.location.origin } })
+                }
+              >
+                Log Out
+              </button>
+            </div>
           )}
         </div>
         {isAuthenticated && (
-        <Link to="/cart">
-          <div className="md:flex hidden md:block items-center gap-2 pr-4">
-          <div className="relative">
-          <BaggageClaim size={28} color="gray" className="font-bold" />
-          <div className="w-4 h-4 text-sm  text-white font-bold flex
+          <Link to="/cart">
+            <div className="flex items-center gap-2 md:flex  md:block items-center gap-2 pr-4">
+              <div className="relative">
+                <BaggageClaim size={28} color="#F86F03" className="font-bold" />
+                <div
+                  className="w-4 h-4 text-sm  text-white font-bold flex
           items-center justify-center rounded-full bg-orange-600 
-          absolute top-[-5px] right-[-8px]">
-            {item.length || 0}
-          </div>
-          </div>
-          <span className="font-bold">Cart</span>
-        </div>
-        </Link>
+          absolute top-[-5px] right-[-8px]"
+                >
+                  {item.length || 0}
+                </div>
+              </div>
+              <span className="font-bold">Cart</span>
+            </div>
+          </Link>
         )}
       </div>
     </div>

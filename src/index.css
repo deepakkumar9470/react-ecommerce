@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Nanum+Gothic:wght@400;700&family=Pattaya&family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600;700&family=Nanum+Gothic:wght@400;700&family=Pattaya&family=Poppins:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Catamaran', sans-serif;
 }
 
 a {

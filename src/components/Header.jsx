@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronDown, ShoppingCart, BaggageClaim } from "lucide-react";
+import { ChevronDown, ShoppingCart } from "lucide-react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -70,7 +70,7 @@ const Header = () => {
           <Link to="/cart">
             <div className="flex items-center gap-2 md:flex  md:block items-center gap-2 pr-4">
               <div className="relative">
-                <BaggageClaim size={28} color="#F86F03" className="font-bold" />
+                <ShoppingCart size={28} color="#F86F03" className="font-bold" />
                 <div
                   className="w-4 h-4 text-sm  text-white font-bold flex
           items-center justify-center rounded-full bg-orange-600 

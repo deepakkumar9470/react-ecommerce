@@ -36,14 +36,14 @@ const Product = ({product}) => {
            <div className='flex items-cener gap-2'>
            <Link to={`product/${product.id}`}>
              <button 
-                className='w-[100px] text-black text-sm py-3 mt-2 px-4 border-2 border-gray-600 rounded-full bg-white border font-bold hover:bg-green-900 hover:text-white  transition duration-75'>
+                className='w-[100px] text-black text-sm py-2 mt-2 px-3 border-2 border-gray-600 rounded-full bg-white border font-bold hover:bg-green-900 hover:text-white  transition duration-75'>
                 View
              </button>
              </Link>
              
              <button 
                 onClick={()=>addToCartHandler(product)} 
-                className='hidden md:block w-[100px] md:w-[150px] text-white text-sm py-3 mt-2  rounded-3xl bg-orange-600 border font-bold hover:bg-orange-500 hover:text-black  transition duration-75'>
+                className='hidden md:block w-[100px] md:w-[120px] text-white text-sm py-2 mt-2  rounded-3xl bg-orange-600 border font-bold hover:bg-orange-500 hover:text-black  transition duration-75'>
                 Add to Cart
              </button>
              <Plus 

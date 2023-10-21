@@ -12,7 +12,7 @@ import Layout from "./components/Layout";
 const HomeLayout = ({ children }) => {
   return (
     <>
-      <Offer /> *
+      <Offer />
       <Header />
       {children}
     </>

@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import {Currency,Truck,FileCheck} from 'lucide-react'
+import {Currency,Truck,FileCheck, DollarSign} from 'lucide-react'
 import Rating from './Rating'
 
 
@@ -56,7 +56,7 @@ const ProductDetail = () => {
              <hr className="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700"/>
              <div className='flex items-center gap-2'>
              <p className='text-2xl font-bold flex items-center'>
-              <Currency fontSize={20}/> 
+              <DollarSign fontSize={20}/> 
               {product.price}
               </p> <span className='text-2xl font-bold flex items-center'>or</span>
               <span className='text-2xl font-bold flex items-center'>99.99/month</span>

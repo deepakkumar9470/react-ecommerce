@@ -1,5 +1,5 @@
 import React from 'react'
-import {Heart,Currency} from 'lucide-react'
+import {Heart,Currency,Plus} from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Rating from './Rating'
 import { useDispatch } from 'react-redux'
@@ -10,7 +10,6 @@ const Product = ({product}) => {
   const dispatch = useDispatch()
 
   const addToCartHandler = (product) =>{
-    console.log('product:', product)
     dispatch(addToCart(product));
     toast.success(`${product.title} is added to cart`)
   } 
@@ -44,9 +43,12 @@ const Product = ({product}) => {
              
              <button 
                 onClick={()=>addToCartHandler(product)} 
-                className='w-[150px] text-white text-sm py-3 mt-2  rounded-full bg-orange-600 border font-bold hover:bg-orange-500 hover:text-black  transition duration-75'>
+                className='hidden md:block w-[100px] md:w-[150px] text-white text-sm py-3 mt-2  rounded-3xl bg-orange-600 border font-bold hover:bg-orange-500 hover:text-black  transition duration-75'>
                 Add to Cart
              </button>
+             <Plus 
+               onClick={()=>addToCartHandler(product)} 
+             className="md:hidden mt-4 w-8 h-8 text-base bg-orange-500 rounded-full text-white font-bolde" size={20}/>
            </div>
              
         </div>

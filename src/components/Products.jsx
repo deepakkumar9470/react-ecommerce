@@ -3,15 +3,21 @@ import axios from 'axios'
 import Product from './Product'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/cartSlice'
+import Filter from './Filter'
 const Products = () => {
     
     const [products, setProducts] = useState([])
+    const [cat,setCat] = useState('')
     const dispatch = useDispatch()
-    useEffect(() => {
-        const fecthProducts = async () =>{
 
+    useEffect(() => {
+        let apiUrl = "https://fakestoreapi.com/products";
+        if(cat){
+            apiUrl = `https://fakestoreapi.com/products/category/${cat}`;
+        }
+        const fecthProducts = async () =>{
             try {
-                const res = await axios.get('https://fakestoreapi.com/products')
+                const res = await axios.get(apiUrl)
                 setProducts(res.data)
             } catch (error) {
                 console.log(error)
@@ -19,14 +25,16 @@ const Products = () => {
 
         }
         fecthProducts()
-    }, [])
+    }, [cat])
 
-    const addToCartHandler = (product) =>{
-        dispatch(addToCart(product))
-    } 
-
+   const handleCategory = (item) =>{
+    setCat(item)
+   }
+ 
   return (
-    <div className='px-10 py-5'>
+    <>
+          <Filter handleCategory={handleCategory}/>  
+          <div className='px-10 py-5'>
         <h2 className='text-3xl font-extrabold pl-4 mb-4'>New Arrival</h2>
 
         <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
@@ -41,6 +49,8 @@ const Products = () => {
 
         </div>
     </div>
+    </>
+   
   )
 }
 

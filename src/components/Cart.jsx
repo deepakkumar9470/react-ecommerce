@@ -1,17 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/cartSlice";
+import {removeFromCart } from "../redux/cartSlice";
 import { toast } from "react-hot-toast";
 import { X, DollarSign, Plus, Minus } from "lucide-react";
 import { Link } from "react-router-dom";
-import Layout from "./Layout";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.cart);
   const removeHandler = (productId) => {
+    console.log(productId)
     dispatch(removeFromCart(productId));
-    toast.success(`${product.title} removed from cart`);
+    toast.success(`Item removed from cart`);
   };
 
   return (
@@ -37,7 +37,7 @@ const Cart = () => {
             </div>
             {/* Card start */}
             {product.map((item) => (
-              <div className="flex items-center hover:bg-[rgb(246,246,248)] -mx-8 px-6 py-5 cursor-pointer">
+              <div key={item.id} className="flex items-center hover:bg-[rgb(246,246,248)] -mx-8 px-6 py-5 cursor-pointer">
                 <div className="flex w-2/5">
                   <div className="w-20">
                     <img className="h-24" src={item?.image} alt={item.title} />

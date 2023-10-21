@@ -5,6 +5,7 @@ import Rating from './Rating'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/cartSlice'
 import {toast} from 'react-hot-toast'
+import {DollarSign} from 'lucide-react'
 
 const Product = ({product}) => {
   const dispatch = useDispatch()
@@ -24,14 +25,14 @@ const Product = ({product}) => {
         <div className='flex justify-between pt-2 max-w-[250px]'>
              <p className='text-md font-bold'>{product.title}</p>
              <p className='text-base font-bold flex items-center'>
-              <Currency size={14} strokeWidth={1.25} />
+              <DollarSign size={14} strokeWidth={1.25} />
               {product.price}
               </p>
         </div>
 
         <div className='flex flex-col gap-2 pt-2 mb-2'>
             <p className='text-base font-medium'>{(product.description.substring(0,30)+ "...")}</p>
-              <Rating/>
+              <Rating rating={product.rating.rate} count={product.rating.count}/>
 
            <div className='flex items-cener gap-2'>
            <Link to={`product/${product.id}`}>

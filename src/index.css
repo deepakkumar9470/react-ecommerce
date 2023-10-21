@@ -9,6 +9,9 @@
   --softBg: #1f273a;
   --softTextColor: #a6a6a6;
 }
+html{
+  scroll-behavior: smooth;
+}
 * {
   margin: 0;
   padding: 0;
@@ -17,6 +20,7 @@
 
 body {
   font-family: 'Catamaran', sans-serif;
+  background: var(--bg) !important;
 }
 
 a {

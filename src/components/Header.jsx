@@ -1,16 +1,18 @@
 import React from "react";
-import { ChevronDown, Search, ShoppingCart, BaggageClaim } from "lucide-react";
+import { ChevronDown, ShoppingCart, BaggageClaim } from "lucide-react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-
+import Loading from './Loading'
 const Header = () => {
   const item = useSelector((state) => state.cart);
   const { user, isAuthenticated, isLoading, loginWithRedirect, logout } =
     useAuth0();
 
+    if(isLoading) return <Loading/>
+
   return (
-    <div className="w-full flex items-center justify-between px-10 py-5">
+    <div className="w-full flex items-center justify-between px-10 py-4">
       <div className="flex items-center gap-2">
         <ShoppingCart
           size={40}

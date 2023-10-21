@@ -3,15 +3,17 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import {Currency,Truck,FileCheck, DollarSign} from 'lucide-react'
 import Rating from './Rating'
+import Loader from './Loader'
 
 
 const ProductDetail = () => {
   const {id} = useParams()
 
-
   const [product, setProduct] = useState({})
+  const [isLoading,setIsLoading] = useState(false)
    
   useEffect(() => {
+    setIsLoading(true)
       const fecthSingleProduct = async () =>{
 
           try {
@@ -23,10 +25,11 @@ const ProductDetail = () => {
 
       }
       fecthSingleProduct()
+      setIsLoading(false)
   }, [id])
 
 
-
+  if(isLoading) return <Loader/>
   return (
     <div>
   

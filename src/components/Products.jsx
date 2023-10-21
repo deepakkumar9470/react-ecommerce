@@ -3,6 +3,7 @@ import axios from 'axios'
 import Product from './Product'
 import {Search} from 'lucide-react'
 import Filter from './Filter'
+import Loader from './Loader'
 const Products = () => {
     
     const [products, setProducts] = useState([])
@@ -30,8 +31,8 @@ const Products = () => {
         fecthProducts()
     }, [cat,query])
 
-   const handleCategory = (item) =>{
-    setCat(item)
+   const handleCategory = (cat) =>{
+    setCat(cat)
    }
  
   return (
@@ -61,7 +62,7 @@ const Products = () => {
                    <Product product={product} key={product.id}/>
                 ))
                :
-               (<p className='text-3xl font-extrabold text-center'>No Products available</p>)
+               (<Loader/>)
             }
 
         </div>

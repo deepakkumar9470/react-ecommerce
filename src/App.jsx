@@ -21,7 +21,7 @@ const HomeLayout = ({ children }) => {
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
   return (
-    <div>
+    <div className="bg-mainBg">
       <Toaster
         toastOptions={{
           style: {

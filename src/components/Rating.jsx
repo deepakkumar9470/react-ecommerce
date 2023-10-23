@@ -17,9 +17,9 @@ const Rating = ({ rating,count }) => {
   return (
     <div className="flex gap-1 items-center">
        {starIcons.map((icon, index) => (
-        <span className="text-green-700" key={index}>{icon}</span>
+        <span className="text-orange text-base" key={index}>{icon}</span>
       ))}
-      <span className="text-small font-semibold">{count}</span>
+      <span className="text-small font-semibold text-softTxt">{count}</span>
     </div>
   );
 };

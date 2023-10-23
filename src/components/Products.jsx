@@ -39,21 +39,21 @@ const Products = () => {
     <>
         <div className='flex items-center justify-between px-10'>
         <Filter handleCategory={handleCategory}/>
-          <div className="flex items-center gap-2  px-4 text-white relative">
+          <div className="flex items-center gap-2  px-4 text-txtColor  relative">
           <input
-            className="bg-gray-50 rounded-full outline-none px-10 py-2 text-gray-500"
+            className="bg-bgLight  rounded-full outline-none px-10 py-2 text-softTxt"
             type="text"
             value={query}
             onChange={(e)=>setQuery(e.target.value)}
             placeholder="Search Product"
           />
-          <Search className="absolute right-8 w-5 h-5 text-gray-400" />
+          <Search className="absolute right-8 w-5 h-5 text-softTxt" />
         </div>  
 
         </div>
           
           <div className='px-10 py-5'>
-        <h2 className='text-3xl font-extrabold pl-4 mb-4'>New Arrival</h2>
+        <h2 className='text-3xl font-extrabold text-txtColor border-b-2 max-w-max pl-4 mb-4'>New Arrival's</h2>
 
         <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
 

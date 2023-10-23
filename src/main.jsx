@@ -9,12 +9,13 @@ import { persistStore } from "redux-persist";
 import { store } from "./redux/store";
 
 let persistor = persistStore(store);
-
+const DOMAIN = import.meta.env.VITE_DOMAIN
+const CLIENT_ID = import.meta.env.VITE_CLIENT_ID
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Auth0Provider
-    domain="dev-0i1f2a3krkkke2c1.us.auth0.com"
-    clientId="d3dAf9YKMou0yottiZew99eiipjQHJB5"
+    domain={DOMAIN}
+    clientId={CLIENT_ID}
     authorizationParams={{
       redirect_uri: window.location.origin,
     }}

@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronDown, ShoppingCart } from "lucide-react";
+import { ChevronDown, LogOut, ShoppingCart } from "lucide-react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -13,7 +13,8 @@ const Header = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="w-full flex items-center justify-between px-10 py-4">
+    <div className="w-full flex items-center justify-between px-4 md:px-10 py-4">
+      {/* Logo Section start */}
       <div className="flex items-center gap-2">
         <ShoppingCart
           size={40}
@@ -25,6 +26,7 @@ const Header = () => {
           </span>
         </Link>
       </div>
+      {/* Logo Section end */}
 
       <div className="items-center text-softTxt gap-5 hidden md:block md:flex">
         <div className="flex items-center gap-1">
@@ -37,6 +39,7 @@ const Header = () => {
         <span className="font-bold cursor-pointer">Delivery</span>
       </div>
 
+      {/* Authenticated Section start */}
       <div className="flex items-center gap-2 md:gap-4 px-5 py-5">
         {!isAuthenticated && (
           <button
@@ -59,21 +62,34 @@ const Header = () => {
                 {user.nickname}
               </span>
               <button
-                className="bg-bgLight   text-softTxt font-semibold rounded-md cursor-pointer px-3 py-2"
+                className="hidden md:block bg-bgLight  text-softTxt font-semibold rounded-md cursor-pointer px-3 py-2"
                 onClick={() =>
                   logout({ logoutParams: { returnTo: window.location.origin } })
                 }
               >
                 Log Out
               </button>
+
+              <LogOut
+                color="#d9d9d9"
+                size={28}
+                className="md:hidden block bg-softBg cursor-pointer w-10 h-10 rounded-md px-2"
+                onClick={() =>
+                  logout({ logoutParams: { returnTo: window.location.origin } })
+                }
+              />
             </div>
           )}
         </div>
         {isAuthenticated && (
           <Link to="/cart">
-            <div className="flex items-center gap-3 md:flex  md:block items-center pr-4">
+            <div className="flex items-center gap-3 md:flex  md:block items-center pr-1 md:pr-4">
               <div className="relative">
-                <ShoppingCart size={28} color="#F86F03" className="font-bold" />
+                <ShoppingCart
+                  size={28}
+                  color="#F86F03"
+                  className="ml-4 md:ml-0 font-bold"
+                />
                 <div
                   className="w-4 h-4 text-sm  text-white  font-bold flex
           items-center justify-center rounded-full bg-orange 
@@ -82,11 +98,14 @@ const Header = () => {
                   {item.length || 0}
                 </div>
               </div>
-              <span className="font-bold text-softTxt">Cart</span>
+              <span className="hidden md:block font-bold text-softTxt">
+                Cart
+              </span>
             </div>
           </Link>
         )}
       </div>
+      {/* Authenticated Section end */}
     </div>
   );
 };

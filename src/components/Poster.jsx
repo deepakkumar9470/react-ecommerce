@@ -3,6 +3,7 @@ import React from "react";
 const Poster = () => {
   return (
     <div className="w-[100%] md:w-[95%]  h-[400px] flex justify-between bg-lightWhite items-center mx-auto  rounded-sm p-5">
+       {/* Left side poster  start */}
       <div className="flex flex-col items-center justify-center  gap-2 pl-16 flex-1 text-center">
         <div className="flex flex-col space-y-2">
           <p className="text-3xl md:text-4xl font-extrabold text-[#19282F]">
@@ -17,6 +18,11 @@ const Poster = () => {
           <span className="relative"> Buy Now</span>
         </button>
       </div>
+       {/* Left side poster  end */}
+
+
+
+        {/* Right side poster  start */}
       <div className="flex items-center justify-center flex-1 hidden md:block">
         <img
           className="max-w-[420px] mix-blend-darken object-contain"
@@ -24,6 +30,7 @@ const Poster = () => {
           alt="poster-img"
         />
       </div>
+          {/* Right side poster  end */}
     </div>
   
   );

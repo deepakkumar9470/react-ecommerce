@@ -3,7 +3,7 @@ import { removeFromCart } from "../redux/cartSlice";
 import { toast } from "react-hot-toast";
 import {Plus, Minus, Trash } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import Loading from "./Loading";
 const Cart = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.cart);
@@ -13,8 +13,8 @@ const Cart = () => {
     toast.success(`Item removed from cart`);
   };
 
-  return (
-    <div className="bg-mainBg">
+  return product?.length>0 ? (
+    <div className="bg-mainBg z-20">
       <div className="container mx-auto mt-10">
         <div className="flex  flex-col md:flex-row shadow-md my-10">
           <div className="w-full w-3/4 bg-softBg px-10 py-10">
@@ -38,7 +38,8 @@ const Cart = () => {
               </h3>
             </div>
             {/* Card start */}
-            {product.map((item) => (
+           {
+            product?.map((item)=>(
               <div
                 key={item.id}
                 className="flex items-center hover:bg-bgLight rouded-sm -mx-8 px-6 py-5 cursor-pointer transition-all duration-100"
@@ -69,7 +70,7 @@ const Cart = () => {
                     size={18}
                     className="font-bold text-txtColor cursor-pointer"
                   />
-
+                   
                   <input
                     className="mx-2  text-center w-8 rounded-md text-txtColor  bg-mainBg placeholder:text-softTxt"
                     type="text"
@@ -85,8 +86,9 @@ const Cart = () => {
                 <span className="hidden md:block text-center w-1/5 text-softTxt font-semibold text-sm">
                   $ {item.price}
                 </span>
-              </div>
-            ))}
+               </div>
+            ))
+           }
             {/* Card end */}
 
             <Link
@@ -146,7 +148,8 @@ const Cart = () => {
         </div>
       </div>
     </div>
-  );
+    
+  ): <Loading/>
 };
 
 export default Cart;

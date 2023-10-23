@@ -51,7 +51,9 @@ const ProductDetail = () => {
                   </div>
               </div>
            </div>
-           
+            
+
+             {/* Peoduct details form start */}
            <div className='flex-1 flex-col '>
              <p className='text-2xl text-txtColor font-bold mb-4'>{product.title}</p>
              <p className='text-sm text-softTxt mb-3'>{product.description}</p>
@@ -116,6 +118,7 @@ const ProductDetail = () => {
               </div>
 
            </div>
+            {/* Peoduct details form end */}
            
 
         

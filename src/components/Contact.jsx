@@ -8,6 +8,7 @@ const Contact = () => {
         <div className="container px-6 md:px-12">
           <div className="block rounded-lg bg-softBg px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-[hsla(0,0%,5%,0.7)] dark:shadow-black/20 md:py-16 md:px-12 -mt-[100px] backdrop-blur-[30px]">
             <div className="flex flex-wrap">
+               {/* Contact form start */}
               <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:px-3 lg:mb-0 lg:w-5/12 lg:px-6">
                 <form action="https://formspree.io/f/xqkvnapa" method="POST">
                   <div className="relative mb-6" data-te-input-wrapper-init>
@@ -68,6 +69,10 @@ const Contact = () => {
                   </button>
                 </form>
               </div>
+                {/* Contact form end */}
+
+
+                 {/* Services list form start */}
               <div className="w-full shrink-0 grow-0 basis-auto lg:w-7/12">
                 <div className="flex flex-wrap">
                   <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:w-full lg:px-6 xl:w-6/12">
@@ -138,6 +143,7 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
+                {/* Services list form end */}
             </div>
           </div>
         </div>
